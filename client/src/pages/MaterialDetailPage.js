@@ -56,25 +56,28 @@ const MaterialDetailPage = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center space-x-4 mb-4">
-          <Link
-            to="/database"
-            className="btn-secondary flex items-center space-x-2"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Database</span>
-          </Link>
-          <button className="btn-primary flex items-center space-x-2">
-            <Download className="w-4 h-4" />
-            <span>Export Data</span>
-          </button>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-4">
+            <Link
+              to="/database"
+              className="btn-secondary flex items-center space-x-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              <span>{t('materialDetail.backToDatabase')}</span>
+            </Link>
+            <button className="btn-primary flex items-center space-x-2">
+              <Download className="w-4 h-4" />
+              <span>{t('materialDetail.downloadData')}</span>
+            </button>
+          </div>
+          <LanguageSwitcher />
         </div>
         
         <h1 className="text-3xl font-bold text-gray-900 mb-2">{material.title}</h1>
         <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600">
           <span>Sample ID: {material.sample_id}</span>
           <span>•</span>
-          <span>Published: {material.publish_date} {material.publish_year}</span>
+          <span>{t('materialDetail.published')}: {material.publish_date} {material.publish_year}</span>
           <span>•</span>
           <span>DOI: {material.doi}</span>
           {material.doi && (
@@ -85,7 +88,7 @@ const MaterialDetailPage = () => {
               className="text-primary-600 hover:text-primary-700 flex items-center space-x-1"
             >
               <ExternalLink className="w-3 h-3" />
-              <span>View Paper</span>
+              <span>{t('materialDetail.viewPaper')}</span>
             </a>
           )}
         </div>
@@ -98,7 +101,7 @@ const MaterialDetailPage = () => {
           <div className="card">
             <div className="flex items-center space-x-2 mb-4">
               <Zap className="w-5 h-5 text-blue-500" />
-              <h2 className="text-xl font-semibold text-gray-900">Composition</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('materialDetail.composition')}</h2>
             </div>
             
             {material.composition_content && material.composition_content.length > 0 ? (
@@ -111,12 +114,12 @@ const MaterialDetailPage = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500">No composition data available</p>
+              <p className="text-gray-500">{t('repository.noData')}</p>
             )}
             
             {material.alloy_designation_name && material.alloy_designation_name !== 'none' && (
               <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm font-medium text-gray-700">Alloy Designation: </span>
+                <span className="text-sm font-medium text-gray-700">{t('materialDetail.alloyDesignation')}: </span>
                 <span className="text-sm text-gray-600">{material.alloy_designation_name}</span>
               </div>
             )}
@@ -126,7 +129,7 @@ const MaterialDetailPage = () => {
           <div className="card">
             <div className="flex items-center space-x-2 mb-4">
               <Thermometer className="w-5 h-5 text-red-500" />
-              <h2 className="text-xl font-semibold text-gray-900">Thermal Processing</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('materialDetail.thermalProcessing')}</h2>
             </div>
             
             {material.thermal_process && material.thermal_process.length > 0 ? (
@@ -135,19 +138,19 @@ const MaterialDetailPage = () => {
                   <div key={index} className="p-4 bg-red-50 rounded-lg">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <span className="text-sm font-medium text-gray-700">Temperature: </span>
+                        <span className="text-sm font-medium text-gray-700">{t('materialDetail.temperature')}: </span>
                         <span className="text-sm text-gray-600">{process.temperature || 'N/A'}</span>
                       </div>
                       <div>
-                        <span className="text-sm font-medium text-gray-700">Time: </span>
+                        <span className="text-sm font-medium text-gray-700">{t('materialDetail.holdingTime')}: </span>
                         <span className="text-sm text-gray-600">{process.time || 'N/A'}</span>
                       </div>
                       <div>
-                        <span className="text-sm font-medium text-gray-700">Cooling: </span>
+                        <span className="text-sm font-medium text-gray-700">{t('materialDetail.coolingMethod')}: </span>
                         <span className="text-sm text-gray-600">{process.cooling_method || 'N/A'}</span>
                       </div>
                       <div>
-                        <span className="text-sm font-medium text-gray-700">Atmosphere: </span>
+                        <span className="text-sm font-medium text-gray-700">{t('materialDetail.atmosphere')}: </span>
                         <span className="text-sm text-gray-600">{process.atmosphere || 'N/A'}</span>
                       </div>
                     </div>
@@ -155,12 +158,12 @@ const MaterialDetailPage = () => {
                 ))}
               </div>
             ) : (
-              <p className="text-gray-500">No thermal processing data available</p>
+              <p className="text-gray-500">{t('repository.noData')}</p>
             )}
             
             {material.other_process && material.other_process !== 'none' && (
               <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm font-medium text-gray-700">Other Processes: </span>
+                <span className="text-sm font-medium text-gray-700">{t('materialDetail.otherProcesses')}: </span>
                 <p className="text-sm text-gray-600 mt-1">{material.other_process}</p>
               </div>
             )}
@@ -171,11 +174,11 @@ const MaterialDetailPage = () => {
             <div className="card">
               <div className="flex items-center space-x-2 mb-4">
                 <Zap className="w-5 h-5 text-green-500" />
-                <h2 className="text-xl font-semibold text-gray-900">Additive Manufacturing</h2>
+                <h2 className="text-xl font-semibold text-gray-900">{t('materialDetail.additiveManufacturing')}</h2>
               </div>
               
               <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-                <h3 className="text-sm font-semibold text-green-800 mb-2">Processing Parameters</h3>
+                <h3 className="text-sm font-semibold text-green-800 mb-2">{t('materialDetail.processingParameters')}</h3>
                 <p className="text-sm text-green-700 leading-relaxed">
                   {material.printing_parameters}
                 </p>
@@ -183,19 +186,19 @@ const MaterialDetailPage = () => {
 
               <div className="mt-4 p-3 bg-gray-50 rounded-lg">
                 <h4 className="text-xs font-semibold text-gray-700 mb-2 uppercase tracking-wide">
-                  Manufacturing Method
+                  {t('materialDetail.manufacturingMethod')}
                 </h4>
                 <div className="text-xs text-gray-600">
                   <div className="mb-1">
-                    <span className="font-medium">Process:</span> {
+                    <span className="font-medium">{t('materialDetail.process')}:</span> {
                       material.printing_parameters.includes('LPBF') ? 'Laser Powder Bed Fusion (LPBF)' :
                       material.printing_parameters.includes('SLM') ? 'Selective Laser Melting (SLM)' :
                       material.printing_parameters.includes('EBM') ? 'Electron Beam Melting (EBM)' :
-                      'Additive Manufacturing'
+                      t('materialDetail.additiveManufacturing')
                     }
                   </div>
                   <div>
-                    <span className="font-medium">Parameters:</span> {material.printing_parameters}
+                    <span className="font-medium">{t('materialDetail.parameters')}:</span> {material.printing_parameters}
                   </div>
                 </div>
               </div>
@@ -206,7 +209,7 @@ const MaterialDetailPage = () => {
           <div className="card">
             <div className="flex items-center space-x-2 mb-4">
               <Microscope className="w-5 h-5 text-purple-500" />
-              <h2 className="text-xl font-semibold text-gray-900">Microstructure</h2>
+              <h2 className="text-xl font-semibold text-gray-900">{t('materialDetail.microstructure')}</h2>
             </div>
             
             {material.microstructure && (
@@ -214,7 +217,7 @@ const MaterialDetailPage = () => {
                 {/* Phase Fractions */}
                 {material.microstructure.phase_fraction && material.microstructure.phase_fraction.length > 0 && (
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Phase Fractions</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">{t('materialDetail.phaseFractions')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                       {material.microstructure.phase_fraction.map((phase, index) => (
                         <div key={index} className="flex justify-between p-2 bg-purple-50 rounded">
@@ -229,7 +232,7 @@ const MaterialDetailPage = () => {
                 {/* Microscope Images */}
                 {material.microstructure.microscope && material.microstructure.microscope.length > 0 && (
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-2">Microscope References</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-2">{t('materialDetail.microscopeReferences')}</h3>
                     <div className="flex flex-wrap gap-2">
                       {material.microstructure.microscope.map((ref, index) => (
                         <span key={index} className="inline-block bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">
@@ -248,14 +251,14 @@ const MaterialDetailPage = () => {
         <div className="space-y-6">
           {/* Tensile Properties */}
           <div className="card">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Tensile Properties</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('materialDetail.tensileProperties')}</h2>
             
             {material.tensile_properties ? (
               <div className="space-y-4">
                 {/* Key Properties Grid */}
                 <div className="grid grid-cols-1 gap-3">
                   <div className="flex justify-between items-center py-3 px-4 bg-green-50 rounded-lg border border-green-200">
-                    <span className="text-sm font-medium text-green-800">Yield Strength</span>
+                    <span className="text-sm font-medium text-green-800">{t('materialDetail.yieldStrength')}</span>
                     <span className="text-sm font-bold text-green-900">
                       {material.tensile_properties.yield_strength !== 'none' ? 
                         material.tensile_properties.yield_strength : 'N/A'}
@@ -263,7 +266,7 @@ const MaterialDetailPage = () => {
                   </div>
                   
                   <div className="flex justify-between items-center py-3 px-4 bg-blue-50 rounded-lg border border-blue-200">
-                    <span className="text-sm font-medium text-blue-800">Ultimate Strength</span>
+                    <span className="text-sm font-medium text-blue-800">{t('materialDetail.tensileStrength')}</span>
                     <span className="text-sm font-bold text-blue-900">
                       {material.tensile_properties.ultimate_strength !== 'none' ? 
                         material.tensile_properties.ultimate_strength : 'N/A'}
@@ -271,7 +274,7 @@ const MaterialDetailPage = () => {
                   </div>
                   
                   <div className="flex justify-between items-center py-3 px-4 bg-purple-50 rounded-lg border border-purple-200">
-                    <span className="text-sm font-medium text-purple-800">Elongation</span>
+                    <span className="text-sm font-medium text-purple-800">{t('materialDetail.elongation')}</span>
                     <span className="text-sm font-bold text-purple-900">
                       {material.tensile_properties.elongation !== 'none' ? 
                         material.tensile_properties.elongation : 'N/A'}
@@ -280,7 +283,7 @@ const MaterialDetailPage = () => {
                   
                   {material.tensile_properties.fracture_toughness && material.tensile_properties.fracture_toughness !== 'none' && (
                     <div className="flex justify-between items-center py-3 px-4 bg-orange-50 rounded-lg border border-orange-200">
-                      <span className="text-sm font-medium text-orange-800">Fracture Toughness</span>
+                      <span className="text-sm font-medium text-orange-800">{t('materialDetail.fractureToughness')}</span>
                       <span className="text-sm font-bold text-orange-900">
                         {material.tensile_properties.fracture_toughness}
                       </span>
@@ -291,14 +294,14 @@ const MaterialDetailPage = () => {
                 {/* Stress-Strain Curve Reference */}
                 {material.tensile_properties.stress_strain_curve && material.tensile_properties.stress_strain_curve !== 'none' && (
                   <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Stress-Strain Data</h4>
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2">{t('materialDetail.stressStrainData')}</h4>
                     <div className="text-xs text-gray-600 space-y-1">
                       <div>
-                        <span className="font-medium">Curve Reference:</span> {material.tensile_properties.stress_strain_curve}
+                        <span className="font-medium">{t('materialDetail.curveReference')}:</span> {material.tensile_properties.stress_strain_curve}
                       </div>
                       {material.tensile_properties.stress_strain_curve_target && (
                         <div>
-                          <span className="font-medium">Data Location:</span> {material.tensile_properties.stress_strain_curve_target}
+                          <span className="font-medium">{t('materialDetail.dataLocation')}:</span> {material.tensile_properties.stress_strain_curve_target}
                         </div>
                       )}
                     </div>
@@ -350,40 +353,40 @@ const MaterialDetailPage = () => {
               </div>
             ) : (
               <div className="text-center py-8">
-                <p className="text-gray-500 text-sm">No tensile properties data available</p>
+                <p className="text-gray-500 text-sm">{t('repository.noData')}</p>
               </div>
             )}
           </div>
 
           {/* Test Conditions */}
           <div className="card">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Test Conditions</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('materialDetail.testConditions')}</h2>
             
             {material.tensile_condition ? (
               <div className="space-y-4">
                 {/* Basic Test Parameters */}
                 <div className="grid grid-cols-1 gap-3">
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-sm font-medium text-gray-700">Standard:</span>
+                    <span className="text-sm font-medium text-gray-700">{t('materialDetail.standard')}:</span>
                     <span className="text-sm text-gray-900">
                       {material.tensile_condition.tensile_standard || 'N/A'}
                     </span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-sm font-medium text-gray-700">Temperature:</span>
+                    <span className="text-sm font-medium text-gray-700">{t('materialDetail.temperature')}:</span>
                     <span className="text-sm text-gray-900">
                       {material.tensile_condition.tensile_temperature || 'N/A'}
                     </span>
                   </div>
                   <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span className="text-sm font-medium text-gray-700">Speed:</span>
+                    <span className="text-sm font-medium text-gray-700">{t('materialDetail.speed')}:</span>
                     <span className="text-sm text-gray-900">
                       {material.tensile_condition.tensile_speed || 'N/A'}
                     </span>
                   </div>
                   {material.tensile_condition.sample_shape && material.tensile_condition.sample_shape !== 'none' && (
                     <div className="flex justify-between items-center py-2 border-b border-gray-100">
-                      <span className="text-sm font-medium text-gray-700">Sample Shape:</span>
+                      <span className="text-sm font-medium text-gray-700">{t('materialDetail.sampleShape')}:</span>
                       <span className="text-sm text-gray-900">
                         {material.tensile_condition.sample_shape}
                       </span>
@@ -426,25 +429,25 @@ const MaterialDetailPage = () => {
               </div>
             ) : (
               <div className="text-center py-8">
-                <p className="text-gray-500 text-sm">No test condition data available</p>
+                <p className="text-gray-500 text-sm">{t('repository.noData')}</p>
               </div>
             )}
           </div>
 
           {/* Publication Info */}
           <div className="card">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Publication</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">{t('materialDetail.publication')}</h2>
             <div className="space-y-2">
               <div>
-                <span className="text-sm text-gray-600">Reference: </span>
+                <span className="text-sm text-gray-600">{t('materialDetail.reference')}: </span>
                 <span className="text-sm text-gray-900">{material.ref}</span>
               </div>
               <div>
-                <span className="text-sm text-gray-600">Year: </span>
+                <span className="text-sm text-gray-600">{t('materialDetail.year')}: </span>
                 <span className="text-sm text-gray-900">{material.publish_year}</span>
               </div>
               <div>
-                <span className="text-sm text-gray-600">Month: </span>
+                <span className="text-sm text-gray-600">{t('materialDetail.month')}: </span>
                 <span className="text-sm text-gray-900">{material.publish_date}</span>
               </div>
             </div>

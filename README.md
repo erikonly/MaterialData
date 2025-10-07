@@ -5,6 +5,7 @@ A comprehensive materials science database platform with modern web interface, a
 ## Features
 
 ### 🗄️ Comprehensive Database
+
 - Detailed material composition data
 - Thermal processing parameters
 - Mechanical properties and test conditions
@@ -12,6 +13,7 @@ A comprehensive materials science database platform with modern web interface, a
 - Publication references and traceability
 
 ### 📊 Analytics Dashboard
+
 - Interactive data visualizations
 - Element distribution analysis
 - Strength and property correlations
@@ -21,6 +23,7 @@ A comprehensive materials science database platform with modern web interface, a
 - **Click-to-explore** chart interactions
 
 ### 🤖 AI Assistant
+
 - Natural language queries in English and Chinese
 - Intelligent analysis of material properties
 - Heat treatment optimization suggestions
@@ -30,6 +33,7 @@ A comprehensive materials science database platform with modern web interface, a
 - **Clickable links** to source materials and publications
 
 ### 🔍 Advanced Search & Comparison
+
 - Multi-criteria filtering
 - Composition-based search
 - Property range queries
@@ -41,12 +45,14 @@ A comprehensive materials science database platform with modern web interface, a
 ## Technology Stack
 
 ### Backend
+
 - **Node.js** with Express.js framework
 - **MongoDB** for data storage
 - **RESTful API** design
 - **Security middleware** (Helmet, CORS, Rate limiting)
 
 ### Frontend
+
 - **React 18** with modern hooks
 - **Tailwind CSS** for styling
 - **Recharts** for data visualization
@@ -54,6 +60,7 @@ A comprehensive materials science database platform with modern web interface, a
 - **Axios** for API communication
 
 ### Key Libraries
+
 - **Lucide React** for icons
 - **React Hot Toast** for notifications
 - **Headless UI** for accessible components
@@ -61,6 +68,7 @@ A comprehensive materials science database platform with modern web interface, a
 ## Quick Start
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - MongoDB (v4.4 or higher)
 - npm or yarn package manager
@@ -68,12 +76,14 @@ A comprehensive materials science database platform with modern web interface, a
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd materials-database-platform
    ```
 
 2. **Install dependencies**
+
    ```bash
    # Install server dependencies
    npm install
@@ -85,19 +95,21 @@ A comprehensive materials science database platform with modern web interface, a
    ```
 
 3. **Environment setup**
+
    ```bash
    # Copy environment template
    cp .env.example .env
-   
+
    # Edit .env with your configuration
    # Set MongoDB URI, API keys, etc.
    ```
 
 4. **Start the application**
+
    ```bash
    # Development mode (runs both server and client)
    npm run dev
-   
+
    # Or run separately:
    # Server: npm run server
    # Client: npm run client
@@ -110,16 +122,19 @@ A comprehensive materials science database platform with modern web interface, a
 ## API Endpoints
 
 ### Materials
+
 - `GET /api/materials` - Get paginated materials list
 - `GET /api/materials/:id` - Get specific material details
 - `GET /api/materials/composition/:element` - Filter by element
 - `GET /api/materials/stats/overview` - Get database statistics
 
 ### Search
+
 - `POST /api/search` - Basic search functionality
 - `POST /api/search/advanced` - Advanced multi-criteria search
 
 ### AI Assistant
+
 - `POST /api/ai/chat` - Send message to AI assistant
 - `GET /api/ai/suggestions` - Get suggested questions
 
@@ -133,13 +148,15 @@ A comprehensive materials science database platform with modern web interface, a
   "publish_year": "2007",
   "sample_id": "10.1007-s10853-007-1963-5_1",
   "composition_content": [
-    {"element": "C", "content": "0.04%"},
-    {"element": "Mn", "content": "1.60%"}
+    { "element": "C", "content": "0.04%" },
+    { "element": "Mn", "content": "1.60%" }
   ],
-  "thermal_process": [{
-    "temperature": "750 °C",
-    "cooling_method": "water-quenching"
-  }],
+  "thermal_process": [
+    {
+      "temperature": "750 °C",
+      "cooling_method": "water-quenching"
+    }
+  ],
   "tensile_properties": {
     "yield_strength": "850 MPa",
     "ultimate_strength": "1200 MPa",
@@ -147,8 +164,8 @@ A comprehensive materials science database platform with modern web interface, a
   },
   "microstructure": {
     "phase_fraction": [
-      {"phase_name": "ferrite", "phase_content": "60%"},
-      {"phase_name": "martensite", "phase_content": "40%"}
+      { "phase_name": "ferrite", "phase_content": "60%" },
+      { "phase_name": "martensite", "phase_content": "40%" }
     ]
   }
 }
@@ -159,21 +176,25 @@ A comprehensive materials science database platform with modern web interface, a
 The AI assistant can help with:
 
 ### Heat Treatment Analysis
+
 - Temperature-time-cooling relationships
 - Optimal processing parameters
 - Phase transformation predictions
 
 ### Composition Effects
+
 - Element influence on properties
 - Alloy design recommendations
 - Multi-element interactions
 
 ### Property Correlations
+
 - Strength-ductility relationships
 - Microstructure-property links
 - Processing-performance connections
 
 ### Example Queries
+
 - "How does carbon content affect yield strength in steels?"
 - "What's the optimal heat treatment for maraging steel?"
 - "Compare elongation in martensitic vs ferritic structures"
@@ -182,6 +203,7 @@ The AI assistant can help with:
 ## Deployment
 
 ### Production Build
+
 ```bash
 # Build client for production
 cd client
@@ -193,6 +215,7 @@ NODE_ENV=production npm start
 ```
 
 ### Docker Deployment
+
 ```dockerfile
 # Dockerfile example
 FROM node:16-alpine
@@ -216,6 +239,7 @@ CMD ["npm", "start"]
 ## Data Sources
 
 All materials data is sourced from peer-reviewed scientific publications with full traceability:
+
 - Journal references and DOI links
 - Publication dates and authors
 - Experimental methodology details
@@ -228,6 +252,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Support
 
 For questions, issues, or feature requests:
+
 - Create an issue on GitHub
 - Contact the development team
 - Check the documentation wiki
@@ -235,6 +260,7 @@ For questions, issues, or feature requests:
 ## Roadmap
 
 ### Upcoming Features
+
 - [ ] Machine learning property predictions
 - [ ] Advanced statistical analysis tools
 - [ ] Export to common formats (CSV, Excel, JSON)
@@ -244,26 +270,32 @@ For questions, issues, or feature requests:
 - [ ] Multi-language interface support
 
 ### Data Expansion
+
 - [ ] Additional material systems (ceramics, polymers)
 - [ ] More processing techniques (additive manufacturing)
 - [ ] Environmental and sustainability metrics
 - [ ] Cost and availability data integration
+
 ## 🆕 Enh
+
 anced Features
 
 ### Material Comparison System
+
 - **Multi-select interface** - Select up to 5 materials for comparison
 - **Interactive comparison charts** - Bar charts for composition, radar charts for properties
 - **Tabbed comparison view** - Composition, Properties, and Thermal Processing tabs
 - **Export functionality** - Download comparison results
 
 ### Dashboard Drill-Down Analytics
+
 - **Click-to-explore** - Click any chart element (bars, pie segments, line points) to drill down
 - **Detailed material listings** - See all materials in each category
 - **Advanced filtering** - Search and sort within drill-down results
 - **Reference tracking** - Complete publication information for each material
 
 ### AI Assistant with Data Provenance
+
 - **Source references** - Every AI response includes relevant data sources
 - **Clickable links** - Direct navigation to material details and external publications
 - **DOI integration** - Links to original research papers
